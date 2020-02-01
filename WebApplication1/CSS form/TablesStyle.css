@@ -1,0 +1,25 @@
+﻿.table {
+    width: 50%;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.head {
+    text-align:left;
+    color: white;
+    background-color: cornflowerblue;
+}
+
+.head th {
+    height: 30px;
+    line-height: 2px;
+}
+
+.body td {
+    height: 30px;
+    line-height: 2px;
+}
+
+.gray {
+    background-color: gainsboro;
+}
