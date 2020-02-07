@@ -9,11 +9,11 @@
     </ProductVersion>
     <SchemaVersion>
     </SchemaVersion>
-    <ProjectGuid>{ABD78ABA-23CB-4611-B216-8826FA491E2B}</ProjectGuid>
+    <ProjectGuid>{FCBCF3B1-2AC5-4381-AD34-EF77CB3FF0DF}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>CSS</RootNamespace>
-    <AssemblyName>CSS</AssemblyName>
+    <RootNamespace>FormCSS</RootNamespace>
+    <AssemblyName>FormCSS</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <UseIISExpress>true</UseIISExpress>
@@ -32,7 +32,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>CSS.xml</DocumentationFile>
+    <DocumentationFile>FormCSS.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -42,7 +42,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>CSS.xml</DocumentationFile>
+    <DocumentationFile>FormCSS.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -92,9 +92,8 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSSreset.css" />
+    <Content Include="FormPage.html" />
     <Content Include="Style.css" />
-    <Content Include="TextPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -169,9 +168,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56084</DevelopmentServerPort>
+          <DevelopmentServerPort>53557</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56084/</IISUrl>
+          <IISUrl>http://localhost:53557/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
