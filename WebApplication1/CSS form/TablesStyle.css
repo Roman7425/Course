@@ -1,25 +1,25 @@
 ﻿.table {
-    width: 50%;
+    text-align: left;
+    font-family: Helvetica Neue,Helvetica;
     border-collapse: collapse;
     border: 1px solid grey;
+    width: 750px;
 }
+
+    .table td {
+        padding: 15px 0px 15px 10px;
+    }
+
+    .table th {
+        padding: 15px 0px 15px 10px;
+    }
 
 .head {
-    text-align:left;
-    color: white;
-    background-color: cornflowerblue;
+    text-align: left;
+    color: #ffffff;
+    background-color: #3498db;
 }
 
-.head th {
-    height: 30px;
-    line-height: 2px;
-}
-
-.body td {
-    height: 30px;
-    line-height: 2px;
-}
-
-.gray {
-    background-color: gainsboro;
+.body tr:nth-child(2n+1) {
+    background-color: #eeeeee;
 }

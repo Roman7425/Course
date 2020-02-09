@@ -92,6 +92,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSSReset.css" />
     <Content Include="TablePage.html" />
     <Content Include="TablesStyle.css" />
     <Content Include="Web.config" />
