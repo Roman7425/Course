@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS Object</title>
+</head>
+<body>
+    <script>
+        var countries =
+            [
+                {
+                    Name: "Russia",
+                    Cities:
+                        [
+                            { Name: "Moscow", Population: 12615279 },
+                            { Name: "Novosibirsk", Population: 1618039 },
+                            { Name: "Saint-Petersburg", Population: 5392992 }
+                        ]
+                },
+                {
+                    Name: "Germany",
+                    Cities:
+                        [
+                            { Name: "Berlin", Population: 3562000 },
+                            { Name: "Hamburg", Population: 1787408 },
+                            { Name: "Munich", Population: 1450381 }
+                        ]
+                },
+                {
+                    Name: "Australia",
+                    Cities:
+                        [
+                            { Name: "Canberra", Population: 367560 },
+                            { Name: "Sydney", Population: 5232310 },
+                            { Name: "melbourne", Population: 4641636 },
+                            { Name: "Adelaide", Population: 1323354 }
+                        ]
+
+                }
+            ];
+
+        function GetMaxCountryCount(list) {
+            var result = list.reduce(function (accum, currentCity) {
+                if (accum.Cities.length < currentCity.Cities.length) {
+                    accum = currentCity;
+                }
+                return accum;
+            }, countries[0]);
+            return result;
+        };
+
+        console.log(GetMaxCountryCount(countries).Name + " - Страна с максимальным количеством городов");
+
+        function GetResult(list) {
+            var result = {};
+            for (i = 0; i < countries.length; i++) {
+                result[list[i].Name] = list[i].Cities.reduce(function (accum, currentValue) {
+                    return accum + currentValue.Population;
+                }, 0);
+            }
+            return result;
+        }
+
+        var res = GetResult(countries);
+    </script>
+</body>
+</html>
