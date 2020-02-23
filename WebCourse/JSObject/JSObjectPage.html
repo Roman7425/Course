@@ -9,31 +9,31 @@
         var countries =
             [
                 {
-                    Name: "Russia",
-                    Cities:
+                    name: "Russia",
+                    cities:
                         [
-                            { Name: "Moscow", Population: 12615279 },
-                            { Name: "Novosibirsk", Population: 1618039 },
-                            { Name: "Saint-Petersburg", Population: 5392992 }
+                            { name: "Moscow", population: 12615279 },
+                            { name: "Novosibirsk", population: 1618039 },
+                            { name: "Saint-Petersburg", population: 5392992 }
                         ]
                 },
                 {
-                    Name: "Germany",
-                    Cities:
+                    name: "Germany",
+                    cities:
                         [
-                            { Name: "Berlin", Population: 3562000 },
-                            { Name: "Hamburg", Population: 1787408 },
-                            { Name: "Munich", Population: 1450381 }
+                            { name: "Berlin", population: 3562000 },
+                            { name: "Hamburg", population: 1787408 },
+                            { name: "Munich", population: 1450381 }
                         ]
                 },
                 {
-                    Name: "Australia",
-                    Cities:
+                    name: "Australia",
+                    cities:
                         [
-                            { Name: "Canberra", Population: 367560 },
-                            { Name: "Sydney", Population: 5232310 },
-                            { Name: "melbourne", Population: 4641636 },
-                            { Name: "Adelaide", Population: 1323354 }
+                            { name: "Canberra", population: 367560 },
+                            { name: "Sydney", population: 5232310 },
+                            { name: "melbourne", population: 4641636 },
+                            { name: "Adelaide", population: 1323354 }
                         ]
 
                 }
@@ -41,7 +41,7 @@
 
         function GetMaxCountryCount(list) {
             var result = list.reduce(function (accum, currentCity) {
-                if (accum.Cities.length < currentCity.Cities.length) {
+                if (accum.cities.length < currentCity.cities.length) {
                     accum = currentCity;
                 }
                 return accum;
@@ -49,19 +49,20 @@
             return result;
         };
 
-        console.log(GetMaxCountryCount(countries).Name + " - Страна с максимальным количеством городов");
+        console.log(GetMaxCountryCount(countries).name + " - Страна с максимальным количеством городов");
 
         function GetResult(list) {
             var result = {};
             for (i = 0; i < countries.length; i++) {
-                result[list[i].Name] = list[i].Cities.reduce(function (accum, currentValue) {
-                    return accum + currentValue.Population;
+                result[list[i].name] = list[i].cities.reduce(function (accum, currentValue) {
+                    return accum + currentValue.population;
                 }, 0);
             }
             return result;
         }
 
         var res = GetResult(countries);
+        console.log(res);
     </script>
 </body>
 </html>
