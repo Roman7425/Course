@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="JSArray.html" />
+    <Content Include="Task1.js" />
+    <Content Include="Task2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
