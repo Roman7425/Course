@@ -5,64 +5,6 @@
     <title>JS Object</title>
 </head>
 <body>
-    <script>
-        var countries =
-            [
-                {
-                    name: "Russia",
-                    cities:
-                        [
-                            { name: "Moscow", population: 12615279 },
-                            { name: "Novosibirsk", population: 1618039 },
-                            { name: "Saint-Petersburg", population: 5392992 }
-                        ]
-                },
-                {
-                    name: "Germany",
-                    cities:
-                        [
-                            { name: "Berlin", population: 3562000 },
-                            { name: "Hamburg", population: 1787408 },
-                            { name: "Munich", population: 1450381 }
-                        ]
-                },
-                {
-                    name: "Australia",
-                    cities:
-                        [
-                            { name: "Canberra", population: 367560 },
-                            { name: "Sydney", population: 5232310 },
-                            { name: "melbourne", population: 4641636 },
-                            { name: "Adelaide", population: 1323354 }
-                        ]
-
-                }
-            ];
-
-        function GetMaxCountryCount(list) {
-            var result = list.reduce(function (accum, currentCity) {
-                if (accum.cities.length < currentCity.cities.length) {
-                    accum = currentCity;
-                }
-                return accum;
-            }, countries[0]);
-            return result;
-        };
-
-        console.log(GetMaxCountryCount(countries).name + " - Страна с максимальным количеством городов");
-
-        function GetResult(list) {
-            var result = {};
-            for (i = 0; i < countries.length; i++) {
-                result[list[i].name] = list[i].cities.reduce(function (accum, currentValue) {
-                    return accum + currentValue.population;
-                }, 0);
-            }
-            return result;
-        }
-
-        var res = GetResult(countries);
-        console.log(res);
-    </script>
+    <script src="Task.js"></script>
 </body>
 </html>
