@@ -1,25 +1,20 @@
 ﻿function ready() {
-    var message = document.createElement("p");
+    var errorMessage = document.getElementById("error-message");
     var resultKelvin = document.createElement("p");
     var resultFarengate = document.createElement("p");
 
     var button = document.getElementById("button");
     button.addEventListener("click", function (e) {
 
+        errorMessage.style.display = "none";
         var temperatureValue = document.getElementById("input-temperature");
         var celsius = temperatureValue.value;
 
-        message.textContent = "";
         resultKelvin.textContent = "";
         resultFarengate.textContent = "";
 
-        if (celsius === "") {
-            message.textContent = "Введите значение температуры!";
-            document.body.append(message);
-        }
-        else if (isNaN(celsius)) {
-            message.textContent = "Введите число";
-            document.body.append(message);
+        if (celsius === "" || isNaN(celsius)) {
+            errorMessage.style.display = "block";
         }
         else {
             var kelvin = Number(celsius) + 273;
