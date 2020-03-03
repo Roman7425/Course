@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOM", "DOM\DOM.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature", "Temperature\Temperature.csproj", "{4F4B7B32-44E5-446C-905D-641158DD997C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TODOList", "TODOList\TODOList.csproj", "{BE0DAC70-4637-4220-BBA5-52C9B0F80127}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4F4B7B32-44E5-446C-905D-641158DD997C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F4B7B32-44E5-446C-905D-641158DD997C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F4B7B32-44E5-446C-905D-641158DD997C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0DAC70-4637-4220-BBA5-52C9B0F80127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0DAC70-4637-4220-BBA5-52C9B0F80127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0DAC70-4637-4220-BBA5-52C9B0F80127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0DAC70-4637-4220-BBA5-52C9B0F80127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
