@@ -1,7 +1,7 @@
 ﻿(function () {
     var array = [];
-    for (var i = 0; i < 100; i++) {
-        array.push(i + 1);
+    for (var i = 1; i <= 100; i++) {
+        array.push(i);
     }
 
     var result = array.filter(function (value) {
