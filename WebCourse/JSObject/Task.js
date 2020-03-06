@@ -33,36 +33,37 @@
             }
         ];
 
-    function getCountriesWithMaxCitiesCount(list) {
-        var result = list.filter(function (value) {
-            if (value.cities.length < list.reduce(function (accum, current) {
-                if (accum.cities.length < current.cities.length) {
-                    accum = current;
-                }
-                return accum;
-            }, list[0]).cities.length) {
+    function getCountriesWithMaxCitiesCount(countries) {
+        var maxCitiesCount = countries.reduce(function (accum, country) {
+            if (accum < country.cities.length) {
+                accum = country.cities.length;
+            }
+            return accum;
+        }, 0);
+
+        return countries.filter(function (country) {
+            if (country.cities.length < maxCitiesCount) {
                 return false;
             }
             else {
                 return true;
             }
         });
-
-        return result;
     }
 
-    console.log(getCountriesWithMaxCitiesCount(countries) + " - Страны с максимальным количеством городов");
+    console.log("Страны с максимальным количеством городов");
+    console.log(getCountriesWithMaxCitiesCount(countries));
 
-    function getCountriesWithPopulation(list) {
-        var result = list.reduce(function (accum, current) {
-            accum[current.name] = current.cities.reduce(function (accum, current) {
-                return accum + current.population;
-            }, 0);
-            return accum;
-        }, {});
-        return result;
+    function getCountriesWithPopulation(countries) {
+        var countriesWithPopulation = {};
+        countries.forEach(function (country) {
+            countriesWithPopulation[country.name] = country.cities.reduce(function (accum, city) {
+                return accum + city.population;
+            },0);
+        });
+
+        return countriesWithPopulation;
     }
 
-    var res = getCountriesWithPopulation(countries);
-    console.log(res);
+    console.log(getCountriesWithPopulation(countries));
 }());
