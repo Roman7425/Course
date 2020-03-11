@@ -35,19 +35,11 @@
 
     function getCountriesWithMaxCitiesCount(countries) {
         var maxCitiesCount = countries.reduce(function (accum, country) {
-            if (accum < country.cities.length) {
-                accum = country.cities.length;
-            }
-            return accum;
+            return Math.max(accum, country.cities.length);
         }, 0);
 
         return countries.filter(function (country) {
-            if (country.cities.length < maxCitiesCount) {
-                return false;
-            }
-            else {
-                return true;
-            }
+            return country.cities.length === maxCitiesCount;
         });
     }
 
@@ -56,10 +48,11 @@
 
     function getCountriesWithPopulation(countries) {
         var countriesWithPopulation = {};
+
         countries.forEach(function (country) {
             countriesWithPopulation[country.name] = country.cities.reduce(function (accum, city) {
                 return accum + city.population;
-            },0);
+            }, 0);
         });
 
         return countriesWithPopulation;
