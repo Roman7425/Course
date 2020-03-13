@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="Style.css" />
     <title>To Do List</title>
 </head>
 <body>
@@ -10,11 +11,13 @@
         <input type="text" id="new-task-input" />
         <button type="button" id="add-new-task-button">Добавить</button>
         <div style="display:none;" id="error-message">Введите что-нибудь!</div>
-        <div class="task-list">
-            <ul>
-            </ul>
+        <div id="box-border">
+            <div class="task-list">
+                <ul>
+                </ul>
+            </div>
         </div>
+        <script src="Script.js"></script>
     </div>
-    <script src="Script.js"></script>
 </body>
 </html>

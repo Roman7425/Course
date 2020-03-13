@@ -1,0 +1,32 @@
+﻿#error-message {
+    color: #ff0000;
+}
+
+.to-do-list{
+    padding: 10px;
+}
+
+.task-list{
+    margin: 5px;
+}
+
+    .task-list ul {
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .task-list button {
+        margin: 10px 5px 10px 10px;
+    }
+
+    .task-list li {
+        margin: 5px;
+        padding: 5px;
+    }
+
+#box-border {
+    margin: 5px 5px 5px 0px;
+    padding: 5px;
+    border: double;
+    background-color: #e9e9e9;
+}
