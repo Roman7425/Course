@@ -2,11 +2,11 @@
     var errorMessage = document.getElementById("error-message");
     var resultKelvin = document.getElementById("result-kelvin");
     var resultFahrenheit = document.getElementById("result-fahrenheit");
+    var temperatureInput = document.getElementById("input-temperature");
 
     var button = document.getElementById("button");
     button.addEventListener("click", function () {
         errorMessage.style.display = "none";
-        var temperatureInput = document.getElementById("input-temperature");
         var celsiusTemperature = temperatureInput.value;
 
         resultKelvin.textContent = "";
