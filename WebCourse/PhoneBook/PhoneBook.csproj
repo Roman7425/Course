@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BE0DAC70-4637-4220-BBA5-52C9B0F80127}</ProjectGuid>
+    <ProjectGuid>{7EAF9F51-E376-450B-B096-5B053BF5D26B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TODOList</RootNamespace>
-    <AssemblyName>TODOList</AssemblyName>
+    <RootNamespace>PhoneBook</RootNamespace>
+    <AssemblyName>PhoneBook</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -67,10 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSSReset.css" />
+    <Content Include="PhoneBook.html" />
     <Content Include="Script.js" />
     <Content Include="Style.css" />
-    <Content Include="TODOList.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +97,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51964</DevelopmentServerPort>
+          <DevelopmentServerPort>54605</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51964/</IISUrl>
+          <IISUrl>http://localhost:54605/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,32 @@
+﻿#table {
+    text-align: left;
+    font-family: Helvetica Neue,Helvetica;
+    border-collapse: collapse;
+    border: 1px solid grey;
+    width: 750px;
+}
+
+    #table td {
+        padding: 15px 0px 15px 10px;
+    }
+
+    #table th {
+        padding: 15px 0px 15px 10px;
+    }
+
+
+#head {
+    background-color: #eeeeee;
+}
+
+#body tr:nth-child(2n+1) {
+    background-color: #eeeeee;
+}
+
+#input{
+    float: right;
+}
+
+#table-div {
+    float: left;
+}
