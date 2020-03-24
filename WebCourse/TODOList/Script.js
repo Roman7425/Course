@@ -8,7 +8,8 @@
         errorMessage.style.display = "none";
 
         if (inputNewTask.value === "") {
-            return errorMessage.style.display = "block";
+            errorMessage.style.display = "block";
+            return;
         }
         var inputNewTaskValue = inputNewTask.value;
         var newTask = document.createElement("li");
@@ -43,7 +44,8 @@
 
             acceptCreateButton.addEventListener("click", function () {
                 if (createInput.value === "") {
-                    return list.removeChild(newTask);
+                    list.removeChild(newTask);
+                    return;
                 }
                 var createValue = createInput.value;
                 inputNewTaskValue = createInput.value;
