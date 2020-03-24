@@ -6,7 +6,8 @@
         .on("click", function () {
             errorMessage.css("display", "none");
             if (inputNewTask.val() === "") {
-                return errorMessage.css("display", "block");
+                errorMessage.css("display", "block");
+                return;
             }
             var newTask = $("<li></li>")
                 .appendTo(list);
@@ -32,7 +33,8 @@
                         .appendTo(newTask)
                         .click(function () {
                             if (createInput.val() === "") {
-                                return newTask.remove();
+                                newTask.remove();
+                                return;
                             }
                             newTaskText.text(createInput.val());
                             newTaskValue = createInput.val();
@@ -40,6 +42,17 @@
                             createButton.show();
                             createInput.hide();
                             acceptButton.hide();
+                            cancelButton.hide();
+                        });
+                    var cancelButton = $("<button>Отмена</button>")
+                        .appendTo(newTask)
+                        .click(function () {
+                            newTaskText.text(newTaskValue);
+                            deleteButton.show();
+                            createButton.show();
+                            createInput.hide();
+                            acceptButton.hide();
+                            cancelButton.hide();
                         });
                 });
             inputNewTask.val("");
