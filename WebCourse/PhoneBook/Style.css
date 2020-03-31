@@ -3,7 +3,7 @@
     font-family: Helvetica Neue,Helvetica;
     border-collapse: collapse;
     border: 1px solid grey;
-    width: 750px;
+    width: 800px;
 }
 
 .table tr:first-child{
@@ -29,13 +29,19 @@
 }
 
 .input-div {
+    margin: 10px;
     float: right;
 }
 
 .table-div {
+    margin: 10px;
     float: left;
 }
 
 .error-message {
     color: #eb5138;
+}
+
+.filter-div{
+    margin: 10px;
 }

@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSSReset.css" />
     <Content Include="libs\jquery-3.4.1.js" />
     <Content Include="PhoneBook.html" />
     <Content Include="Script.js" />

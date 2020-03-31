@@ -2,10 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="CSSReset.css" />
     <link rel="stylesheet" type="text/css" href="Style.css" />
     <title>Book</title>
 </head>
 <body>
+    <div class="filter-div">
+        <input id="filter-input" placeholder="Фильтр" />
+        <button id="accept-filter">Применить</button>
+        <button id="cancel-filter">Отменить</button>
+    </div>
     <div class="table-div">
         <table class="table" border="1">
             <thead class="table-head">
@@ -15,7 +21,7 @@
                     <th>Фамилия</th>
                     <th>Имя</th>
                     <th>Номер телефона</th>
-                    <th><button id="head-delete-button">Удалить отмеченные</button></th>
+                    <th><button id="head-delete-button">Удалить</button></th>
                 </tr>
             </thead>
             <tbody class="table-body">
