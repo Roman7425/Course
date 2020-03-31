@@ -1,4 +1,4 @@
-﻿#table {
+﻿.table {
     text-align: left;
     font-family: Helvetica Neue,Helvetica;
     border-collapse: collapse;
@@ -6,27 +6,36 @@
     width: 750px;
 }
 
-    #table td {
-        padding: 15px 0px 15px 10px;
-    }
+.table tr:first-child{
+    width:5px; 
+}
 
-    #table th {
-        padding: 15px 0px 15px 10px;
-    }
+.table-div td {
+    padding: 15px 0px 15px 10px;
+}
+
+.table-div th {
+    padding: 15px 0px 15px 10px;
+}
 
 
-#head {
+.table-head {
+    background-color: #82a0ea;
+    color: #ffffff;
+}
+
+.table-body tr:nth-child(2n+1) {
     background-color: #eeeeee;
 }
 
-#body tr:nth-child(2n+1) {
-    background-color: #eeeeee;
-}
-
-#input{
+.input-div {
     float: right;
 }
 
-#table-div {
+.table-div {
     float: left;
+}
+
+.error-message {
+    color: #eb5138;
 }
