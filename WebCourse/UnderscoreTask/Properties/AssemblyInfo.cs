@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных с этой сборкой.
-[assembly: AssemblyTitle("Underscore")]
+[assembly: AssemblyTitle("UnderscoreTask")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Underscore")]
+[assembly: AssemblyProduct("UnderscoreTask")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов typelib, если этот проект видим для COM
-[assembly: Guid("3ef126a4-10e9-4049-b654-58796a905091")]
+[assembly: Guid("699ac8df-bae4-4d7c-8266-ca2c80d48806")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
