@@ -3,25 +3,21 @@
     font-family: Helvetica Neue,Helvetica;
     border-collapse: collapse;
     border: 1px solid grey;
-    width: 800px;
-}
-
-.table tr:first-child{
-    width:5px; 
 }
 
 .table-div td {
-    padding: 15px 0px 15px 10px;
+    padding: 10px;
 }
 
 .table-div th {
-    padding: 15px 0px 15px 10px;
+    padding: 10px;
 }
 
 
 .table-head {
     background-color: #82a0ea;
     color: #ffffff;
+    padding: 10px;
 }
 
 .table-body tr:nth-child(2n+1) {
@@ -30,18 +26,20 @@
 
 .input-div {
     margin: 10px;
-    float: right;
 }
 
 .table-div {
     margin: 10px;
-    float: left;
 }
 
 .error-message {
     color: #eb5138;
 }
 
-.filter-div{
+.filter-div {
     margin: 10px;
+}
+
+.input-error {
+    border-color: #eb5138;
 }

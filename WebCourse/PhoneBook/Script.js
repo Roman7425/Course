@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+﻿$(function () {
     var tableBody = (".table-body");
     $("#add-button").click(function () {
         $("#name-error").hide();
@@ -6,30 +6,30 @@
         $("#number-error").hide();
         $("#number-repeated-error").hide();
         var wasError = false;
-        var nameInput = $("#input-name").css("border-color", "");
-        var surnameInput = $("#input-surname").css("border-color", "");
-        var numberInput = $("#input-number").css("border-color", "");
+        var nameInput = $("#input-name").removeClass("input-error");
+        var surnameInput = $("#input-surname").removeClass("input-error");
+        var numberInput = $("#input-number").removeClass("input-error");
 
         if (nameInput.val() === "") {
             $("#name-error").show();
-            nameInput.css("border-color", "#eb5138");
+            nameInput.addClass("input-error");
             wasError = true;
         }
         if (surnameInput.val() === "") {
             $("#surname-error").show();
-            surnameInput.css("border-color", "#eb5138");
+            surnameInput.addClass("input-error");
             wasError = true;
         }
         if (numberInput.val() === "" || isNaN(numberInput.val())) {
             $("#number-error").show();
-            numberInput.css("border-color", "#eb5138");
+            numberInput.addClass("input-error");
             wasError = true;
         }
 
         $(".table-body .number-col").each(function () {
             if ($(this).text() === numberInput.val()) {
                 $("#number-repeated-error").show();
-                numberInput.css("border-color", "#eb5138");
+                numberInput.addClass("input-error");
                 wasError = true;
             }
         });
@@ -50,20 +50,22 @@
                     var choice = confirm("Действительно хотите удалить контакт?");
                     if (choice) {
                         newTr.remove();
-                        $(".table-body tr").each(function (i) {
-                            $(this).children().eq(1).text(i + 1);
-                        });
+                        renumber();
                     }
                 })));
-
-        $(".table-body tr").each(function (i) {
-            $(this).children().eq(1).text(i + 1);
-        });
 
         nameInput.val("");
         surnameInput.val("");
         numberInput.val("");
         wasError = true;
+
+        if (wasFilter === true && !(newTr.children().eq(2).text().indexOf($("#filter-input").val()) + 1 ||
+            newTr.children().eq(3).text().indexOf($("#filter-input").val()) + 1 ||
+            newTr.children().eq(4).text().indexOf($("#filter-input").val()) + 1)) {
+            newTr.hide();
+        }
+
+        renumber();
     });
 
     $("#head-delete-button").click(function () {
@@ -74,43 +76,39 @@
                     $(this).parent().parent().remove();
                 }
             });
-            $(".table-body tr").each(function (i) {
-                $(this).children().eq(1).text(i + 1);
-            });
+            renumber();
         }
     });
 
     $("#head-check").click(function () {
-        if ($("#head-check").is(":checked") === true) {
-            $(".check").each(function () {
-                $(this).prop("checked", true);
-            });
-        }
-        else {
-            $(".check").each(function () {
-                $(this).prop("checked", false);
-            });
-        }
+        $(".check").prop("checked", $("#head-check").is(":checked"));
     });
 
-    var elements = [];
-    $("#accept-filter").click(function () {
-        $(".table-body tr").each(function () {
-            if ($(this).children().eq(2).text() === $("#filter-input").val() ||
-                $(this).children().eq(3).text() === $("#filter-input").val() ||
-                $(this).children().eq(4).text() === $("#filter-input").val()) {
+    var wasFilter = false;
 
-            } else {
-                elements.push($(this));
-                $(this).hide();
-            }
-        });
+    $("#accept-filter").click(function () {
+        $(".table-body tr").hide()
+            .each(function () {
+                if ($(this).children().eq(2).text().indexOf($("#filter-input").val()) + 1 ||
+                    $(this).children().eq(3).text().indexOf($("#filter-input").val()) + 1 ||
+                    $(this).children().eq(4).text().indexOf($("#filter-input").val()) + 1) {
+                    $(this).show();
+                }
+            });
+        renumber();
+        wasFilter = true;
     });
 
     $("#cancel-filter").click(function () {
         $("#filter-input").val("");
-        elements.forEach(function (element) {
-            element.show();
-        })
+        $(".table-body tr").show();
+        renumber();
+        wasFilter = false;
     });
+
+    var renumber = function () {
+        $(".table-body tr:visible").each(function (i) {
+            $(this).children().eq(1).text(i + 1);
+        });
+    }
 });

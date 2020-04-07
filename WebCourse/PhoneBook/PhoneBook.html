@@ -7,6 +7,16 @@
     <title>Book</title>
 </head>
 <body>
+    <div class="input-div">
+        <input id="input-name" name="name" placeholder="Имя" />
+        <input id="input-surname" name="surname" placeholder="Фамилия" />
+        <input id="input-number" name="number" placeholder="Телефон" />
+        <button id="add-button">Добавить</button>
+        <p style="display:none" class="error-message" id="name-error">Заполните поле "Имя"!</p>
+        <p style="display:none" class="error-message" id="surname-error">Заполните поле "Фамилия"!</p>
+        <p style="display:none" class="error-message" id="number-error">Введите номер телефона в поле "Телефон"!</p>
+        <p style="display:none" class="error-message" id="number-repeated-error">Контакт с таким номером уже добавлен!</p>
+    </div>
     <div class="filter-div">
         <input id="filter-input" placeholder="Фильтр" />
         <button id="accept-filter">Применить</button>
@@ -21,22 +31,12 @@
                     <th>Фамилия</th>
                     <th>Имя</th>
                     <th>Номер телефона</th>
-                    <th><button id="head-delete-button">Удалить</button></th>
+                    <th><button id="head-delete-button">Удалить выбранные контакты</button></th>
                 </tr>
             </thead>
             <tbody class="table-body">
             </tbody>
         </table>
-    </div>
-    <div class="input-div">
-        <input id="input-name" name="name" placeholder="Имя" />
-        <input id="input-surname" name="surname" placeholder="Фамилия" />
-        <input id="input-number" name="number" placeholder="Телефон" />
-        <button id="add-button">Добавить</button>
-        <p style="display:none" class="error-message" id="name-error">Заполните поле "Имя"!</p>
-        <p style="display:none" class="error-message" id="surname-error">Заполните поле "Фамилия"!</p>
-        <p style="display:none" class="error-message" id="number-error">Введите номер телефона в поле "Телефон"!</p>
-        <p style="display:none" class="error-message" id="number-repeated-error">Контакт с таким номером уже добавлен!</p>
     </div>
     <script src="libs/jquery-3.4.1.js"></script>
     <script src="Script.js"></script>
