@@ -58,9 +58,9 @@
                         newTaskText.text(newTaskValue);
                         deleteButton.show();
                         editButton.show();
-                        newTask.append(createInput)
-                            .append(acceptButton)
-                            .append(cancelButton);
+                        createInput.remove();
+                        acceptButton.remove();
+                        cancelButton.remove();
                     });
             });
         inputNewTask.val("");
