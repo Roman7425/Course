@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrapScript.js" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -221,7 +222,9 @@
     <Content Include="node_modules\jquery\src\var\support.js" />
     <Content Include="node_modules\jquery\src\var\toString.js" />
     <Content Include="node_modules\jquery\src\wrap.js" />
-    <Content Include="ToDoPage.html" />
+    <Content Include="Script.js" />
+    <Content Include="Style.css" />
+    <Content Include="PhoneBookBootstrap.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
