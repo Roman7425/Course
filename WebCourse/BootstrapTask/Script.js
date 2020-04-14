@@ -1,5 +1,6 @@
 ﻿$(function () {
     var tableBody = $(".table-body");
+
     var addButton = $("#add-button").click(function () {
         $("#name-error").hide();
         $("#surname-error").hide();
@@ -59,9 +60,9 @@
         surnameInput.val("");
         numberInput.val("");
 
-        if (wasFilter === true && !(newTr.children().eq(2).text().indexOf($("#filter-input").val()) + 1 ||
-            newTr.children().eq(3).text().indexOf($("#filter-input").val()) + 1 ||
-            newTr.children().eq(4).text().indexOf($("#filter-input").val()) + 1)) {
+        if (wasFilter === true && !(newTr.children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1 ||
+            newTr.children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1 ||
+            newTr.children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1)) {
             newTr.hide();
         }
 
@@ -89,9 +90,9 @@
     $("#accept-filter").click(function () {
         $(".table-body tr").hide()
             .each(function () {
-                if ($(this).children().eq(2).text().indexOf($("#filter-input").val()) + 1 ||
-                    $(this).children().eq(3).text().indexOf($("#filter-input").val()) + 1 ||
-                    $(this).children().eq(4).text().indexOf($("#filter-input").val()) + 1) {
+                if ($(this).children().eq(2).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
+                    $(this).children().eq(3).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
+                    $(this).children().eq(4).text().toLowerCase().indexOf($("#filter-input").val()) > -1) {
                     $(this).show();
                 }
             });

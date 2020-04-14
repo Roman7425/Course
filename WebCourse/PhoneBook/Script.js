@@ -60,9 +60,9 @@
         numberInput.val("");
         wasError = true;
 
-        if (wasFilter === true && !(newTr.children().eq(2).text().indexOf($("#filter-input").val()) + 1 ||
-            newTr.children().eq(3).text().indexOf($("#filter-input").val()) + 1 ||
-            newTr.children().eq(4).text().indexOf($("#filter-input").val()) + 1)) {
+        if (wasFilter === true && !(newTr.children().eq(2).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
+            newTr.children().eq(3).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
+            newTr.children().eq(4).text().toLowerCase().indexOf($("#filter-input").val()) > -1)) {
             newTr.hide();
         }
 
