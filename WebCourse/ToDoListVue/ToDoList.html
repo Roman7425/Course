@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <title></title>
+</head>
+<body>
+
+    <div v-cloak id="ToDoList">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <input v-model="newTaskText" type="text" class="form-control m-3" placeholder="Новая задача" />
+                </div>
+                <div class="col">
+                    <button @click="addTask" type="button" class="btn btn-primary m-3">Добавить</button>
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                    <div v-if="errorMessage" v-text="errorMessage" class="alert alert-danger w-25 m-3" role="alert"></div>
+                </div>
+            </div>
+        </div>
+
+        <ul>
+            <li v-for="task in tasks" :key="task.id" class="m-3">
+                <div v-if="task.createActive" class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <input v-model="task.text" type="text" class="form-control m-3" />
+                        </div>
+                        <div class="col">
+                            <button @click="acceptCreate(task)" class="btn btn-primary m-3">Ок</button>
+                            <button @click="cancelCreate(task)" class="btn btn-primary">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <span v-text="task.text"></span>
+                    <button @click="deleteTask(task)" class="btn btn-danger m-2" type="button">&Chi;</button>
+                    <button @click="createTask(task)" class="btn btn-primary m-2" type="button">Редактировать</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="Script.js"></script>
+</body>
+</html>
