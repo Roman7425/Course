@@ -1,0 +1,17 @@
+{
+  "name": "phonebookvue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0",
+    "underscore": "^1.10.2",
+    "vue": "^2.6.11"
+  }
+}

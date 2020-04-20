@@ -33,7 +33,7 @@
 
     <p><span style="display:none" id="name-error" class="badge badge-pill badge-danger">Заполните поле "Имя"!</span></p>
     <p><span style="display:none" id="surname-error" class="badge badge-pill badge-danger">Заполните поле "Фамилия"!</span></p>
-    <p><span style="display:none" id="number-error" class="badge badge-pill badge-danger">Заполните поле "Номер"!</span></p>
+    <p><span style="display:none" id="number-error" class="badge badge-pill badge-danger">Введите номер контакта в поле "Номер"!</span></p>
     <p><span style="display:none" id="number-repeated-error" class="badge badge-pill badge-danger">Контакт с таким номером уже существует!</span></p>
 
     <div class="container-fluid">
@@ -48,7 +48,7 @@
                 <button type="button" id="cancel-filter" class="btn btn-primary">Отменить</button>
             </div>
             <div class="col">
-                <button type="button" id="head-delete-button" class="btn btn-danger btn-right">Удалить выбранные контакты</button>
+                <button type="button" id="head-delete-button" class="btn btn-danger btn-right" disabled data-toggle="modal" data-target="#exampleModal1">Удалить выбранные контакты</button>
             </div>
         </div>
     </div>
@@ -68,6 +68,46 @@
             <tbody class="table-body">
             </tbody>
         </table>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Внимание!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Вы действительно хотите удалить выбранные контакты?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <button id="checked-accept-delete" type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Внимание!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Вы действительно хотите удалить контакт?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <button id="accept-delete" type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>

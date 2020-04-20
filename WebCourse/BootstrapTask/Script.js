@@ -1,5 +1,6 @@
 ﻿$(function () {
     var tableBody = $(".table-body");
+    var temp;
 
     var addButton = $("#add-button").click(function () {
         $("#name-error").hide();
@@ -42,58 +43,61 @@
 
         var newTr = $("<tr></tr>")
             .appendTo(tableBody)
-            .append($("<td><input class=\"check\" type=\"checkbox\"></td>"))
+            .append($("<td><input class=\"check\" type=\"checkbox\"></td>").click(function () {
+                $(".check").is(":checked") ? $("#head-delete-button").removeAttr("disabled") : $("#head-delete-button").attr("disabled", true);
+            }))
             .append($("<td></td>"))
             .append($("<td></td>").text(nameInput.val()))
             .append($("<td></td>").text(surnameInput.val()))
             .append($("<td class=\"number-col\"></td>").text(numberInput.val()))
-            .append($("<td></td>").html($("<button class=\"btn btn-danger\">Удалить</button>")
-                .click(function () {
-                    var choice = confirm("Действительно хотите удалить контакт?");
-                    if (choice) {
-                        newTr.remove();
-                        renumber();
-                    }
-                })));
+            .append($("<td></td>").html($("<button data-toggle=\"modal\" data-target=\"#exampleModal\" class=\"btn btn-danger\">Удалить</button>").click(function () {
+                temp = newTr;
+            })));
 
         nameInput.val("");
         surnameInput.val("");
         numberInput.val("");
 
-        if (wasFilter === true && !(newTr.children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1 ||
-            newTr.children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1 ||
-            newTr.children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) > -1)) {
+        if (wasFilter === true && (newTr.children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
+            newTr.children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &
+            newTr.children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1)) {
             newTr.hide();
         }
 
         renumber();
     });
 
-    $("#head-delete-button").click(function () {
-        var choice = confirm("Действительно хотите удалить выбранные контакты?");
-        if (choice) {
-            $(".check").each(function () {
-                if ($(this).is(":checked")) {
-                    $(this).parent().parent().remove();
-                }
-            });
-            renumber();
-        }
+    $("#checked-accept-delete").click(function () {
+        $(".check").each(function () {
+            if ($(this).is(":checked")) {
+                $(this).parent().parent().remove();
+            }
+        });
+        $("#head-delete-button").attr("disabled", true);
+        renumber();
+    });
+
+    $("#accept-delete").click(function () {
+        temp.remove();
+        renumber();
     });
 
     $("#head-check").click(function () {
-        $(".check").prop("checked", $("#head-check").is(":checked"));
+        if ($(".table-body > tr").children().length > 0) {
+            $(".check").prop("checked", $("#head-check").is(":checked"));
+            $("#head-check").is(":checked") ? $("#head-delete-button").removeAttr("disabled") : $("#head-delete-button").attr("disabled", true);
+        }
     });
 
     var wasFilter = false;
 
     $("#accept-filter").click(function () {
-        $(".table-body tr").hide()
+        $(".table-body tr").show()
             .each(function () {
-                if ($(this).children().eq(2).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
-                    $(this).children().eq(3).text().toLowerCase().indexOf($("#filter-input").val()) > -1 ||
-                    $(this).children().eq(4).text().toLowerCase().indexOf($("#filter-input").val()) > -1) {
-                    $(this).show();
+                if ($(this).children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
+                    $(this).children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
+                    $(this).children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1) {
+                    $(this).hide().children().eq(0).children().eq(0).click().prop("checked", false);
                 }
             });
         renumber();
