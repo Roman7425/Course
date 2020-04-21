@@ -58,9 +58,11 @@
         surnameInput.val("");
         numberInput.val("");
 
-        if (wasFilter === true && (newTr.children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
-            newTr.children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &
-            newTr.children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1)) {
+        var filterValue = $("#filter-input").val().toLowerCase();
+
+        if (wasFilter === true && (newTr.children().eq(2).text().toLowerCase().indexOf(filterValue) === -1 &&
+            newTr.children().eq(3).text().toLowerCase().indexOf(filterValue) === -1 &
+            newTr.children().eq(4).text().toLowerCase().indexOf(filterValue) === -1)) {
             newTr.hide();
         }
 
@@ -92,11 +94,12 @@
     var wasFilter = false;
 
     $("#accept-filter").click(function () {
+        var filterValue = $("#filter-input").val().toLowerCase();
         $(".table-body tr").show()
             .each(function () {
-                if ($(this).children().eq(2).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
-                    $(this).children().eq(3).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1 &&
-                    $(this).children().eq(4).text().toLowerCase().indexOf($("#filter-input").val().toLowerCase()) === -1) {
+                if ($(this).children().eq(2).text().toLowerCase().indexOf(filterValue) === -1 &&
+                    $(this).children().eq(3).text().toLowerCase().indexOf(filterValue) === -1 &&
+                    $(this).children().eq(4).text().toLowerCase().indexOf(filterValue) === -1) {
                     $(this).hide().children().eq(0).children().eq(0).click().prop("checked", false);
                 }
             });
