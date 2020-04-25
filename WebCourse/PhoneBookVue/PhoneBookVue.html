@@ -28,8 +28,19 @@
                 <div class="col">
                     <div v-if="nameError" v-text="nameError" class="alert alert-danger w-25 m-3" role="alert"></div>
                     <div v-if="surnameError" v-text="surnameError" class="alert alert-danger w-25 m-3" role="alert"></div>
-                    <div v-if="numberError"  v-text="numberError" class="alert alert-danger w-25 m-3" role="alert"></div>
+                    <div v-if="numberError" v-text="numberError" class="alert alert-danger w-25 m-3" role="alert"></div>
                     <div v-if="numberRepeatedError" v-text="numberRepeatedError" class="alert alert-danger w-25 m-3" role="alert"></div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-3">
+                    <input v-model="filterValue" type="text" class="form-control m-3" placeholder="Фильтр" />
+                </div>
+                <div class="col">
+                    <button @click="acceptFilter" type="button" class="btn btn-primary m-3">Применить</button>
+                    <button @click="cancelFilter" type="button" class="btn btn-primary">Отмена</button>
+                </div>
+                <div class="col">
+                    <button @click="deleteCheckedContacts" class="btn btn-danger m-3">Удалить выбранные контакты!</button>
                 </div>
             </div>
         </div>
@@ -47,8 +58,8 @@
                     </tr>
                 </thead>
                 <tbody class="table-body">
-                    <tr v-for="contact in contacts" :key="contact.id">
-                        <td><input type="checkbox"/></td>
+                    <tr v-if="contact.fitsFilter" v-for="contact in contacts" :key="contact.id">
+                        <td ><input v-model="contact.check" type="checkbox" /></td>
                         <td v-text="contact.id"></td>
                         <td v-text="contact.name"></td>
                         <td v-text="contact.surname"></td>

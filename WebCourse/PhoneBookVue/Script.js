@@ -6,10 +6,12 @@
         newName: "",
         newSurname: "",
         newNumber: "",
+        filterValue: "",
+        wasFilter: false,
         nameError: "",
         surnameError: "",
         numberError: "",
-        numberRepeatedError: ""
+        numberRepeatedError: "",
     },
     methods: {
         addContact: function () {
@@ -45,14 +47,29 @@
                 return;
             }
 
-            this.contacts.push({
-                id: this.newId,
-                name: this.newName,
-                surname: this.newSurname,
-                number: this.newNumber
+            var filterValue = String(this.filterValue).toLowerCase();
+
+            var newContactFitsFilter = String(this.newName).toLowerCase().indexOf(filterValue) > -1 || String(this.newSurname).toLowerCase().indexOf(filterValue) > -1 ||
+                String(this.newNumber).toLowerCase().indexOf(filterValue) > -1;
+
+            var idWithFilter = 1;
+            _.forEach(this.contacts, function (c) {
+                if (c.fitsFilter === true) {
+                    idWithFilter++;
+                }
             });
 
-            this.newId++;
+            this.newId = this.contacts.length + 1;
+
+            this.contacts.push({
+                id: this.wasFilter === false ? this.newId : idWithFilter,
+                name: this.newName,
+                surname: this.newSurname,
+                number: this.newNumber,
+                check: false,
+                fitsFilter: this.wasFilter === false ? true : newContactFitsFilter
+            });
+
             this.newName = "";
             this.newSurname = "";
             this.newNumber = "";
@@ -69,6 +86,60 @@
                 return c !== contact;
             });
             this.newId--;
+        },
+
+        acceptFilter: function () {
+            this.wasFilter = true;
+            var filterValue = String(this.filterValue).toLowerCase();
+            _.forEach(this.contacts, function (c) {
+                if (String(c.name).toLowerCase().indexOf(filterValue) === -1 && String(c.surname).toLowerCase().indexOf(filterValue) === -1 &&
+                    String(c.number).toLowerCase().indexOf(filterValue) === -1) {
+                    c.fitsFilter = false;
+                    c.check = false;
+                }
+            });
+
+            var idWithFilter = 1;
+            _.forEach(this.contacts, function (c) {
+                if (c.fitsFilter === true) {
+                    c.id = idWithFilter;
+                    idWithFilter++;
+                }
+            })
+        },
+
+        cancelFilter: function () {
+            var number = 1;
+            _.forEach(this.contacts, function (c) {
+                c.fitsFilter = true;
+                c.id = number;
+                number++;
+            });
+            this.wasFilter = false;
+            this.filterValue = "";
+        },
+
+        deleteCheckedContacts: function () {
+            this.contacts = this.contacts.filter(function (c) {
+                return c.check === false;
+            });
+
+            if (this.wasFilter === true) {
+                var idWithFilter = 1;
+                _.forEach(this.contacts, function (c) {
+                    if (c.fitsFilter === true) {
+                        c.id = idWithFilter;
+                        idWithFilter++;
+                    }
+                })
+            }
+            else {
+                var number = 1;
+                _.forEach(this.contacts, function (c) {
+                    c.id = number;
+                    number++;
+                });
+            }
         }
     }
 });
