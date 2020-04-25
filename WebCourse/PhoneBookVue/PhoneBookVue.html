@@ -36,20 +36,16 @@
                     <input v-model="filterValue" type="text" class="form-control m-3" placeholder="Фильтр" />
                 </div>
                 <div class="col">
-                    <button @click="acceptFilter" type="button" class="btn btn-primary m-3">Применить</button>
-                    <button @click="cancelFilter" type="button" class="btn btn-primary">Отмена</button>
-                </div>
-                <div class="col">
-                    <button @click="deleteCheckedContacts" class="btn btn-danger m-3">Удалить выбранные контакты!</button>
+                    <button v-bind:disabled="isDisabled"  @click="deleteCheckedContacts" class="btn btn-danger m-3">Удалить выбранные контакты!</button>
                 </div>
             </div>
         </div>
 
-        <div clss="m-3">
+        <div class="m-4">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th><input id="head-check" type="checkbox"></th>
+                        <th><input v-model="headCheck" @click="checkAllContacts" id="head-check" type="checkbox"></th>
                         <th>№</th>
                         <th>Имя</th>
                         <th>Фамилия</th>
@@ -58,9 +54,9 @@
                     </tr>
                 </thead>
                 <tbody class="table-body">
-                    <tr v-if="contact.fitsFilter" v-for="contact in contacts" :key="contact.id">
-                        <td ><input v-model="contact.check" type="checkbox" /></td>
-                        <td v-text="contact.id"></td>
+                    <tr v-for="contact in filteredContacts" :key="contact.id">
+                        <td ><input v-model="contact.check" type="checkbox"/></td>
+                        <td v-text="filteredContacts.indexOf(contact) + 1"></td>
                         <td v-text="contact.name"></td>
                         <td v-text="contact.surname"></td>
                         <td v-text="contact.number"></td>

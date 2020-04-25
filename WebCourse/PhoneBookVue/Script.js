@@ -7,11 +7,44 @@
         newSurname: "",
         newNumber: "",
         filterValue: "",
-        wasFilter: false,
         nameError: "",
         surnameError: "",
         numberError: "",
         numberRepeatedError: "",
+        headCheck: false
+    },
+    computed: {
+        filteredContacts: function () {
+            var text = this.filterValue.toLowerCase();
+
+            _.each(this.contacts, function (c) {
+                if (c.name.toLowerCase().indexOf(text) === -1 &&
+                    c.surname.toLowerCase().indexOf(text) === -1 &&
+                    c.number.toLowerCase().indexOf(text) === -1) {
+                    c.check = false;
+                }
+            });
+
+            return this.contacts.filter(function (c) {
+                return text.length === 0 || (c.name.toLowerCase().indexOf(text) >= 0 ||
+                    c.surname.toLowerCase().indexOf(text) >= 0 ||
+                    c.number.toLowerCase().indexOf(text) >= 0);
+            });
+        },
+        checkHead: function () {
+            checkHead === false ?
+                _.each(this.contacts, function (c) {
+                    c.check = false;
+                }) :
+                _.each(this.contacts, function (c) {
+                    c.check = true;
+                });
+        },
+        isDisabled: function () {
+            return _.find(this.contacts, function (c) {
+                return c.check === true;
+            }) === undefined;
+        }
     },
     methods: {
         addContact: function () {
@@ -47,27 +80,14 @@
                 return;
             }
 
-            var filterValue = String(this.filterValue).toLowerCase();
-
-            var newContactFitsFilter = String(this.newName).toLowerCase().indexOf(filterValue) > -1 || String(this.newSurname).toLowerCase().indexOf(filterValue) > -1 ||
-                String(this.newNumber).toLowerCase().indexOf(filterValue) > -1;
-
-            var idWithFilter = 1;
-            _.forEach(this.contacts, function (c) {
-                if (c.fitsFilter === true) {
-                    idWithFilter++;
-                }
-            });
-
             this.newId = this.contacts.length + 1;
 
             this.contacts.push({
-                id: this.wasFilter === false ? this.newId : idWithFilter,
+                id: this.newId,
                 name: this.newName,
                 surname: this.newSurname,
                 number: this.newNumber,
-                check: false,
-                fitsFilter: this.wasFilter === false ? true : newContactFitsFilter
+                check: false
             });
 
             this.newName = "";
@@ -76,70 +96,26 @@
         },
 
         deleteContact: function (contact) {
-            _.each(this.contacts, function (c) {
-                if (c.id > contact.id) {
-                   return c.id--;
-                }
-            });
-
             this.contacts = _.filter(this.contacts, function (c) {
                 return c !== contact;
             });
             this.newId--;
         },
 
-        acceptFilter: function () {
-            this.wasFilter = true;
-            var filterValue = String(this.filterValue).toLowerCase();
-            _.forEach(this.contacts, function (c) {
-                if (String(c.name).toLowerCase().indexOf(filterValue) === -1 && String(c.surname).toLowerCase().indexOf(filterValue) === -1 &&
-                    String(c.number).toLowerCase().indexOf(filterValue) === -1) {
-                    c.fitsFilter = false;
-                    c.check = false;
-                }
-            });
-
-            var idWithFilter = 1;
-            _.forEach(this.contacts, function (c) {
-                if (c.fitsFilter === true) {
-                    c.id = idWithFilter;
-                    idWithFilter++;
-                }
-            })
-        },
-
-        cancelFilter: function () {
-            var number = 1;
-            _.forEach(this.contacts, function (c) {
-                c.fitsFilter = true;
-                c.id = number;
-                number++;
-            });
-            this.wasFilter = false;
-            this.filterValue = "";
-        },
-
         deleteCheckedContacts: function () {
             this.contacts = this.contacts.filter(function (c) {
                 return c.check === false;
             });
+        },
 
-            if (this.wasFilter === true) {
-                var idWithFilter = 1;
-                _.forEach(this.contacts, function (c) {
-                    if (c.fitsFilter === true) {
-                        c.id = idWithFilter;
-                        idWithFilter++;
-                    }
+        checkAllContacts: function () {
+            this.headCheck === false ?
+                _.each(this.contacts, function (c) {
+                    c.check = true;
+                }) :
+                _.each(this.contacts, function (c) {
+                    c.check = false;
                 })
-            }
-            else {
-                var number = 1;
-                _.forEach(this.contacts, function (c) {
-                    c.id = number;
-                    number++;
-                });
-            }
         }
     }
 });
