@@ -44,7 +44,7 @@
         var newTr = $("<tr></tr>")
             .appendTo(tableBody)
             .append($("<td><input class=\"check\" type=\"checkbox\"></td>").click(function () {
-                $(".check").is(":checked") ? $("#head-delete-button").removeAttr("disabled") : $("#head-delete-button").attr("disabled", true);
+                $("#head-delete-button").prop("disabled", !$(".check").is(":checked"));
             }))
             .append($("<td></td>"))
             .append($("<td></td>").text(nameInput.val()))
@@ -87,7 +87,7 @@
     $("#head-check").click(function () {
         if ($(".table-body > tr").children().length > 0) {
             $(".check").prop("checked", $("#head-check").is(":checked"));
-            $("#head-check").is(":checked") ? $("#head-delete-button").removeAttr("disabled") : $("#head-delete-button").attr("disabled", true);
+            $("#head-delete-button").prop("disabled", !$("#head-check").is(":checked"));
         }
     });
 
