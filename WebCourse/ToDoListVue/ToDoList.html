@@ -8,8 +8,7 @@
     <title></title>
 </head>
 <body>
-
-    <div v-cloak id="ToDoList">
+    <div v-cloak id="todo-list">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
@@ -23,28 +22,39 @@
                     <div v-if="errorMessage" v-text="errorMessage" class="alert alert-danger w-25 m-3" role="alert"></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <ul>
+                        <li v-for="task in tasks" :key="task.id" class="mt-3">
+                            <div class="container-fluid">
+                                <div class="row row-cols-3" v-if="task.isEditing">
+                                    <div class="col-md-5 col-6">
+                                        <input v-model="task.text" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-md-auto col-3">
+                                        <button @click="acceptEdit(task)" class="btn btn-primary">OK</button>
+                                    </div>
+                                    <div class="col-md-auto col-3">
+                                        <button @click="cancelEdit(task)" class="btn btn-primary">Отмена</button>
+                                    </div>
+                                </div>
+                                <div class="row row-cols-3" v-else>
+                                    <div class="col-md-auto col-4 p-1">
+                                        <span v-text="task.text"></span>
+                                    </div>
+                                    <div class="col-md-auto col-4">
+                                        <button @click="deleteTask(task)" class="btn btn-danger" type="button">&Chi;</button>
+                                    </div>
+                                    <div class="col-md-auto col-4">
+                                        <button @click="editTask(task)" class="btn btn-primary" type="button">Редактировать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <ul>
-            <li v-for="task in tasks" :key="task.id" class="m-3">
-                <div v-if="task.createActive" class="container-fluid">
-                    <div class="row">
-                        <div class="col-4">
-                            <input v-model="task.text" type="text" class="form-control m-3" />
-                        </div>
-                        <div class="col">
-                            <button @click="acceptCreate(task)" class="btn btn-primary m-3">Ок</button>
-                            <button @click="cancelCreate(task)" class="btn btn-primary">Отмена</button>
-                        </div>
-                    </div>
-                </div>
-                <div v-else>
-                    <span v-text="task.text"></span>
-                    <button @click="deleteTask(task)" class="btn btn-danger m-2" type="button">&Chi;</button>
-                    <button @click="createTask(task)" class="btn btn-primary m-2" type="button">Редактировать</button>
-                </div>
-            </li>
-        </ul>
     </div>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>

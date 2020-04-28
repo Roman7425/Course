@@ -1,6 +1,5 @@
-﻿
-new Vue({
-    el: "#ToDoList",
+﻿new Vue({
+    el: "#todo-list",
     data: {
         newId: 1,
         newTaskText: "",
@@ -11,16 +10,17 @@ new Vue({
         addTask: function () {
             this.errorMessage = "";
 
-            if (this.newTaskText === "") {
-                this.errorMessage = "Enter new Task";
+            if (this.newTaskText.replace(/ /g, '') === "") {
+                this.errorMessage = "Введите новую задачу!";
+                this.newTaskText = "";
                 return;
             }
 
             this.tasks.push({
                 id: this.newId,
                 text: this.newTaskText,
-                createActive: false,
-                temp: null
+                isEditing: false,
+                originalText: null
             });
 
             this.newId++;
@@ -33,23 +33,23 @@ new Vue({
             });
         },
 
-        createTask: function (task) {
-            task.createActive = true;
-            task.temp = task.text;
+        editTask: function (task) {
+            task.isEditing = true;
+            task.originalText = task.text;
         },
 
-        acceptCreate: function (task) {
+        acceptEdit: function (task) {
             if (task.text === "") {
                 this.tasks = this.tasks.filter(function (x) {
                     return x !== task;
                 });
             }
-            task.createActive = false;
+            task.isEditing = false;
         },
 
-        cancelCreate: function (task) {
-            task.text = task.temp;
-            task.createActive = false;
+        cancelEdit: function (task) {
+            task.text = task.originalText;
+            task.isEditing = false;
         }
     }
 });
